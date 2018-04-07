@@ -1,1 +1,11 @@
-theme: jekyll-theme-minimal
+# Site settings
+title: Javier Rodríguez Domínguez
+email: javierrd96@gmail.com
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "http://zhonskate.github.io" # the base hostname & protocol for your site
+twitter_username: zhonskate
+github_username:  zhonskate
+linkedin_username: zhonskate
+
+# Build settings
+markdown: kramdown

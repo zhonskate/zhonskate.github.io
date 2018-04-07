@@ -1,0 +1,49 @@
+---
+layout: default
+title: Blog
+---
+
+<div id="home">
+	<h1 id="intro">Blog</h1>
+	{% for post in site.posts limit:5 %}
+	<div class="post">
+		<h2><a href="{{ post.url }}">{{post.title}}</a></h2>
+		<span class="date">{{ post.date | date:"%B %d, %Y" }}</span>
+		{% assign images = post.content | split:"<img" %}
+		{% for image in images %}
+			{% if image contains 'src=' %}
+				{% assign imageMarkup = image | split:">" | first %}
+				<br><a href="{{ post.url }}"><img {{ imageMarkup }}></a>
+				{% break %}
+			{% endif %}
+		{% endfor %}
+		<div class="entry-content">
+			{{ post.content | strip_html | truncatewords: 75 }}...
+			<a href="{{ post.url }}">
+				more
+			</a>
+			</br></br></br>
+		</div>
+
+	{% endfor %}
+
+ 	<div id="related">
+    		<div class="related_left">
+      			<h3>Previous posts</h3>
+      			<ul class="posts small">
+        			{% for post in site.posts offset:5 limit:3 %}
+        				<li><span>{{ post.date | date_to_string }}</span> 
+						&raquo; <a href="{{ post.url }}">{{ post.title }}</a>
+					</li>
+        			{% endfor %}
+      			</ul>
+    		</div>
+    		<div class="related_right">
+      			<h3>Older... (see <a href="/z-archive.html">archive</a> for more)</h3>
+    		</div>
+		{% for post in site.posts offset:5 limit:3 %}
+			<br>
+                {% endfor %}
+  	</div>
+	<br><br><br>
+</div>
