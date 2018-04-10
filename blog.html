@@ -18,7 +18,7 @@ title: Blog
 			{% endif %}
 		{% endfor %}
 		<div class="entry-content">
-			{{ post.content | strip_html | truncatewords: 75 }}...
+			{{ post.content | truncatewords: 75 }}
 			<a href="{{ post.url }}">
 				more
 			</a>
